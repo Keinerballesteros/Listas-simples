@@ -74,8 +74,8 @@ public class Listassimples {
         inicio = nuevo;
     } else {
         Nodo temporal = inicio;
-        int contador = 0;
-        while (temporal != null && contador < posicion - 1) {
+        int contador = 1;
+        while (temporal != null && contador < posicion) {
             temporal = temporal.getEnlace();
             contador++;
         }
@@ -88,7 +88,38 @@ public class Listassimples {
     }
 }
 
+    //Agregar un nodo por dato adelante de uno dado
     
+    public void insertarAntesDeDato(String nombre, int edad, float promedio, String datoBuscado) {
+    Nodo nuevo = new Nodo();
+    nuevo.setNombre(nombre);
+    nuevo.setEdad(edad);
+    nuevo.setPromedio(promedio);
+
+    if (inicio == null) {
+        JOptionPane.showMessageDialog(null, "La lista está vacía.");
+        return;
+    }
+
+    if (inicio.getNombre().equals(datoBuscado)) {
+        nuevo.setEnlace(inicio);
+        inicio = nuevo;
+        return;
+    }
+
+    Nodo temporal = inicio;
+    while (temporal.getEnlace() != null && !temporal.getEnlace().getNombre().equals(datoBuscado)) {
+        temporal = temporal.getEnlace();
+    }
+
+    if (temporal.getEnlace() != null) {
+        nuevo.setEnlace(temporal.getEnlace());
+        temporal.setEnlace(nuevo);
+    } else {
+        JOptionPane.showMessageDialog(null, "El dato buscado no se encuentra en la lista.");
+    }
+}
+
     
     //Agregar un nodo por dato delante de uno dado
     
