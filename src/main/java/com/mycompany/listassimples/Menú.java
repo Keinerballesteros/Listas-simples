@@ -35,6 +35,8 @@ public class Menú extends javax.swing.JFrame {
         insertarNodoPorPosicion = new javax.swing.JButton();
         insertarNodoPorDato = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        eliminar = new javax.swing.JButton();
+        eliminarPorDato = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,21 +102,24 @@ public class Menú extends javax.swing.JFrame {
             }
         });
 
+        eliminar.setText("Eliminar Por Indice");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+
+        eliminarPorDato.setText("Eliminar Por Dato");
+        eliminarPorDato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarPorDatoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(insertarFinal)
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(obtener)
-                            .addComponent(consultar))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +137,8 @@ public class Menú extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(obtener))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(promedio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,10 +146,22 @@ public class Menú extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(insertarNodoPorPosicion, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(insertarNodoPorDato, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                                            .addComponent(insertarNodoPorDato, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(eliminarPorDato)
+                                                    .addComponent(eliminar))
+                                                .addGap(1, 1, 1))))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(crearInicio)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(143, 143, 143)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(insertarFinal)))
+                                    .addComponent(crearInicio))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(consultar)))
                         .addGap(47, 47, 47))))
         );
         layout.setVerticalGroup(
@@ -181,7 +199,11 @@ public class Menú extends javax.swing.JFrame {
                         .addComponent(insertarNodoPorDato)))
                 .addGap(9, 9, 9)
                 .addComponent(jLabel5)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(eliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(eliminarPorDato)
+                .addContainerGap())
         );
 
         pack();
@@ -214,6 +236,14 @@ public class Menú extends javax.swing.JFrame {
     private void insertarNodoPorDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarNodoPorDatoActionPerformed
        objLista.insertarDespuesDeDato(nombre.getText(), Integer.parseInt(edad.getText()), Float.parseFloat(promedio.getText()), JOptionPane.showInputDialog("Ingrese el dato: "));
     }//GEN-LAST:event_insertarNodoPorDatoActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        objLista.eliminar(Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posicion que quiere eliminar")));
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    private void eliminarPorDatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPorDatoActionPerformed
+        objLista.eliminarPorDato(JOptionPane.showInputDialog("Ingrese el nombre"));
+    }//GEN-LAST:event_eliminarPorDatoActionPerformed
 
     
     /**
@@ -255,6 +285,8 @@ public class Menú extends javax.swing.JFrame {
     private javax.swing.JButton consultar;
     private javax.swing.JButton crearInicio;
     private javax.swing.JTextField edad;
+    private javax.swing.JButton eliminar;
+    private javax.swing.JButton eliminarPorDato;
     private javax.swing.JButton insertarFinal;
     private javax.swing.JButton insertarNodoPorDato;
     private javax.swing.JButton insertarNodoPorPosicion;

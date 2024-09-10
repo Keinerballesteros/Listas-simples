@@ -1,22 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+
 
 package com.mycompany.listassimples;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author DELL
- */
+
 public class Listassimples {
 
     Nodo inicio;
-     int size; 
     Listassimples(){
         inicio = null;
-       size=0;
     }
     
     public void insertarInicio(String nombre, int edad, float promedio){
@@ -69,7 +63,7 @@ public class Listassimples {
     nuevo.setEdad(edad);
     nuevo.setPromedio(promedio);
 
-    if (posicion == 0) {
+    if (posicion == 1) {
         nuevo.setEnlace(inicio);
         inicio = nuevo;
     } else {
@@ -170,4 +164,51 @@ public class Listassimples {
         }
         JOptionPane.showMessageDialog(null,"Nombre: " +temporal.getNombre() + " Edad:"+ temporal.getEdad() +" Promedio:" +temporal.getPromedio());
     }
+    
+    public void eliminar(int posicion){
+        if (inicio == null) {
+        JOptionPane.showMessageDialog(null, "La lista está vacía.");
+        return;
+        }
+
+    if (posicion == 1) {
+        inicio = inicio.getEnlace();
+        return;
+    }
+        Nodo temporal = inicio;
+        int contador = 1;
+        while (temporal != null && contador < posicion) {
+            temporal = temporal.getEnlace();
+            contador++;
+        }
+        if (temporal == null) {
+        JOptionPane.showMessageDialog(null, "La posición especificada no existe.");
+        } else {
+            temporal.setEnlace(temporal.getEnlace().getEnlace());
+        }
+    }
+    
+    public void eliminarPorDato(String datoBuscado){
+       
+        if (inicio == null) {
+        JOptionPane.showMessageDialog(null, "La lista está vacía.");
+        return;
+        }
+        if(inicio.getNombre().equalsIgnoreCase(datoBuscado)){
+          inicio = inicio.getEnlace();
+        return;
+        }
+        Nodo temporal = inicio;
+        while(temporal.getEnlace() != null && !datoBuscado.equalsIgnoreCase(temporal.getNombre())){
+            temporal = temporal.getEnlace();
+        }
+        if (temporal == null) {
+        JOptionPane.showMessageDialog(null, "La posición especificada no existe.");
+        } else {
+            temporal.setEnlace(temporal.getEnlace().getEnlace());
+        }
+        
+    }
 }
+
+//Hacer un metodo para ordenar la lista por el nombre de la a la z
