@@ -209,56 +209,66 @@ public class Listassimples {
         }
         
     }
+    
+    
     //Hacer un metodo para ordenar la lista por el nombre de la a la z
     public void ordenarPorNombre() {
-        
     if (inicio == null || inicio.getEnlace() == null) {
-        // La lista está vacía o tiene solo un nodo, no es necesario ordenar.
+        JOptionPane.showMessageDialog(null, "La lista no tiene suficientes elementos para ordenar");
         return;
     }
 
-    boolean intercambio;
+    boolean huboCambio;
     do {
-        intercambio = false;
+         
+        //actual: para rastrear el nodo que estamos comparando.
+        //siguiente: es el nodo siguiente al que se está comparando.
+        //anterior: rastrea el nodo anterior en caso de que necesitemos intercambiar nodos.
+        //huboCambio: se utiliza para verificar si hubo intercambios en cada pasada del ciclo.
+        
         Nodo actual = inicio;
         Nodo siguiente = inicio.getEnlace();
-
+        Nodo anterior = null;
+        huboCambio = false;
+        
+        
+        //Usamos un ciclo while para recorrer toda la lista. Si el nombre del nodo actual es mayor (alfabéticamente) que el del nodo siguiente, entonces intercambiamos ambos nodos.
         while (siguiente != null) {
-            // Comparamos los nombres de los nodos actual y siguiente.
             if (actual.getNombre().compareToIgnoreCase(siguiente.getNombre()) > 0) {
-                // Si el nombre del nodo actual es mayor que el del siguiente, intercambiamos los nodos.
-                Nodo temp = actual;
-                actual = siguiente;
-                siguiente = temp;
-
-                // Actualizamos los enlaces.
-                if (actual == inicio) {
+                
+                // Intercambiar nodos
+                huboCambio = true;
+                if (anterior == null) {
+                    // Cambiar el inicio de la lista
                     inicio = siguiente;
                 } else {
-                    Nodo anterior = inicio;
-                    while (anterior.getEnlace() != actual) {
-                        anterior = anterior.getEnlace();
-                    }
                     anterior.setEnlace(siguiente);
                 }
-                temp = siguiente.getEnlace();
+                
+                actual.setEnlace(siguiente.getEnlace());
                 siguiente.setEnlace(actual);
-                actual.setEnlace(temp);
-
-                intercambio = true;
+                
+                // Actualizar punteros
+                anterior = siguiente;
+                siguiente = actual.getEnlace();
+            } else {
+                anterior = actual;
+                actual = siguiente;
+                siguiente = siguiente.getEnlace();
             }
-
-            actual = siguiente;
-            siguiente = siguiente.getEnlace();
         }
-    } while (intercambio);
+    } while (huboCambio);
+
+    JOptionPane.showMessageDialog(null, "Lista ordenada alfabéticamente por nombre");
 }
+    //Ordenar por Edad
     public void ordenarPorEdad() {
     if (inicio == null || inicio.getEnlace() == null) {
         JOptionPane.showMessageDialog(null, "La lista está vacía o solo tiene un nodo.");
         return;
     }
 
+    
     boolean huboIntercambio;
     do {
         huboIntercambio = false;
@@ -272,7 +282,8 @@ public class Listassimples {
                 siguiente = actual;
                 actual = temp;
 
-                // Actualizamos los enlaces.
+                // Actualizamos los enlaces:
+                
                 if (actual == inicio) {
                     inicio = siguiente;
                 } else {
@@ -293,6 +304,11 @@ public class Listassimples {
 
     JOptionPane.showMessageDialog(null, "La lista se ha ordenado por edad (de menor a mayor).");
 }
-
+    
+    // Crear un algoritmo que me genero n nombres de forma aleatorio
+    
+    
+    
+    
 }
 
