@@ -209,6 +209,90 @@ public class Listassimples {
         }
         
     }
+    //Hacer un metodo para ordenar la lista por el nombre de la a la z
+    public void ordenarPorNombre() {
+        
+    if (inicio == null || inicio.getEnlace() == null) {
+        // La lista está vacía o tiene solo un nodo, no es necesario ordenar.
+        return;
+    }
+
+    boolean intercambio;
+    do {
+        intercambio = false;
+        Nodo actual = inicio;
+        Nodo siguiente = inicio.getEnlace();
+
+        while (siguiente != null) {
+            // Comparamos los nombres de los nodos actual y siguiente.
+            if (actual.getNombre().compareToIgnoreCase(siguiente.getNombre()) > 0) {
+                // Si el nombre del nodo actual es mayor que el del siguiente, intercambiamos los nodos.
+                Nodo temp = actual;
+                actual = siguiente;
+                siguiente = temp;
+
+                // Actualizamos los enlaces.
+                if (actual == inicio) {
+                    inicio = siguiente;
+                } else {
+                    Nodo anterior = inicio;
+                    while (anterior.getEnlace() != actual) {
+                        anterior = anterior.getEnlace();
+                    }
+                    anterior.setEnlace(siguiente);
+                }
+                temp = siguiente.getEnlace();
+                siguiente.setEnlace(actual);
+                actual.setEnlace(temp);
+
+                intercambio = true;
+            }
+
+            actual = siguiente;
+            siguiente = siguiente.getEnlace();
+        }
+    } while (intercambio);
+}
+    public void ordenarPorEdad() {
+    if (inicio == null || inicio.getEnlace() == null) {
+        JOptionPane.showMessageDialog(null, "La lista está vacía o solo tiene un nodo.");
+        return;
+    }
+
+    boolean huboIntercambio;
+    do {
+        huboIntercambio = false;
+        Nodo actual = inicio;
+        Nodo siguiente = inicio.getEnlace();
+
+        while (siguiente != null) {
+            if (actual.getEdad() > siguiente.getEdad()) {
+                // Intercambiamos los nodos.
+                Nodo temp = siguiente;
+                siguiente = actual;
+                actual = temp;
+
+                // Actualizamos los enlaces.
+                if (actual == inicio) {
+                    inicio = siguiente;
+                } else {
+                    Nodo anterior = inicio;
+                    while (anterior.getEnlace() != actual) {
+                        anterior = anterior.getEnlace();
+                    }
+                    anterior.setEnlace(siguiente);
+                }
+                siguiente = siguiente.getEnlace();
+                huboIntercambio = true;
+            } else {
+                actual = siguiente;
+                siguiente = siguiente.getEnlace();
+            }
+        }
+    } while (huboIntercambio);
+
+    JOptionPane.showMessageDialog(null, "La lista se ha ordenado por edad (de menor a mayor).");
 }
 
-//Hacer un metodo para ordenar la lista por el nombre de la a la z
+}
+
