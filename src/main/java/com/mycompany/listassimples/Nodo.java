@@ -10,23 +10,17 @@ public class Nodo {
         return enlace;
     }
 
-    /**
-     * @param enlace the enlace to set
-     */
+  
     public void setEnlace(Nodo enlace) {
         this.enlace = enlace;
     }
 
-    /**
-     * @return the nombre
-     */
+    
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
+   
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

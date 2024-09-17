@@ -3,6 +3,8 @@
 package com.mycompany.listassimples;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 
@@ -11,6 +13,37 @@ public class Listassimples {
     Nodo inicio;
     Listassimples(){
         inicio = null;
+    }
+    
+    Random random = new Random();
+    
+    public void insertar(){
+        String arreglo[] = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z"};
+        String nombre = "";
+        for (int i = 0; i < 5; i++) {
+            int numeroAleatorio = random.nextInt(25) + 1;
+            String letra = arreglo[numeroAleatorio];
+            nombre += letra;
+        }
+        int edad = 12;
+        float nota = 45;
+        Nodo nuevo = new Nodo();
+        nuevo.setNombre(nombre);
+        nuevo.setEdad(edad);
+        nuevo.setPromedio(nota);
+        nuevo.setEnlace(null);
+        if (inicio == null) {
+            JOptionPane.showMessageDialog(null, "La lista està vacia");
+            inicio = nuevo;
+        }
+        else {
+            
+            Nodo temporal = inicio;
+            while(temporal.getEnlace()!=null) {
+                temporal = temporal.getEnlace();
+            }
+            temporal.setEnlace(nuevo);
+        }
     }
     
     public void insertarInicio(String nombre, int edad, float promedio){
@@ -195,19 +228,24 @@ public class Listassimples {
         return;
         }
         if(inicio.getNombre().equalsIgnoreCase(datoBuscado)){
+            
+            //Con el .getEnlace() cambio el nodo inicio al siguiente nodo
           inicio = inicio.getEnlace();
         return;
         }
         Nodo temporal = inicio;
-        while(temporal.getEnlace() != null && !datoBuscado.equalsIgnoreCase(temporal.getNombre())){
-            temporal = temporal.getEnlace();
+        //debemos iterar un nodo antes al nodo que queremos eliminar
+        while(temporal.getEnlace() != null){
+            if(temporal.getEnlace().getNombre().equalsIgnoreCase(datoBuscado)){
+                temporal.setEnlace(temporal.getEnlace().getEnlace()); 
+            }
+            temporal = temporal.getEnlace();   
         }
         if (temporal == null) {
         JOptionPane.showMessageDialog(null, "La posición especificada no existe.");
-        } else {
-            temporal.setEnlace(temporal.getEnlace().getEnlace());
-        }
+
         
+    }
     }
     //Hacer un metodo para ordenar la lista por el nombre de la a la z
     public void ordenarPorNombre() {
@@ -293,6 +331,71 @@ public class Listassimples {
 
     JOptionPane.showMessageDialog(null, "La lista se ha ordenado por edad (de menor a mayor).");
 }
+// Codigo para revisar
+//    public void ordenarEnOrden() {
+//                    
+//        if (inicio == null) {
+//            JOptionPane.showMessageDialog(null, "La lista està vacia");
+//            return;
+//        }
+//        
+//        // Recorrer los nodos        
+//        Nodo inicial = inicio;
+//        int cantidadNodos = getLongitud();
+//        int posicion = 0;
+//        String[] arrayNombres = new String[cantidadNodos];
+//        while(inicial!=null) {
+//            arrayNombres[posicion] = inicial.getName();
+//            inicial = inicial.getEnlace();
+//            posicion++;
+//        }
+//        
+//        // Tengo los nodos ordenados
+//        Arrays.sort(arrayNombres);
+//        JOptionPane.showMessageDialog(null, Arrays.toString(arrayNombres));
+//        
+//        // Algoritmo de busqueda
+//        // if inicio = arrayNombres[0]
+//        
+//        
+//        //Encontrar el primer nodo según el nombre
+//        String nombreInicio = arrayNombres[0];
+//        Nodo nuevoInicio = null;
+//        inicial = inicio;
+//        posicion = 1;
+//        while(inicial!=null) {
+//            if (inicial.getName().equals(nombreInicio)) {
+//                nuevoInicio = inicial;
+//                eliminarIndice(posicion);
+//                break;
+//            }
+//            inicial = inicial.getEnlace();
+//            posicion++;
+//        }        
+//        
+//        // Cicla cantidad de nodos veces - 1
+//        for (int i = 1; i < cantidadNodos; i++) {
+//            inicial = inicio;
+//            // Cicla hasta encontrar el nodo
+//            posicion = 1;
+//            while(inicial!=null) {
+//                if (inicial.getName().equals(arrayNombres[i])) {
+//                    Nodo temporal = nuevoInicio;
+//                    // Llega a la posición necesaria para establecer el enlace
+//                    for (int j = 1; j < i; j++) {
+//                        temporal = temporal.getEnlace();                        
+//                    }
+//                    temporal.setEnlace(inicial);
+//                    // Elimina al nodo de la lista original para
+//                    // no confundir nombres repetidos
+//                    eliminarIndice(posicion);
+//                    break;
+//                }
+//                posicion++;
+//                inicial = inicial.getEnlace();
+//            }
+//        }        
+//        inicio = nuevoInicio;
+    }
 
-}
 

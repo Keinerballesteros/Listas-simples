@@ -13,6 +13,18 @@ import javax.swing.JOptionPane;
 public class Menú extends javax.swing.JFrame {
 
     Listassimples objLista = new Listassimples();
+    
+//   // Llamamos al método que queremos medir
+//        long inicioBucle = System.nanoTime();
+//         // Aquí reemplaza con el nombre de tu método
+//        objLista.insertar();
+//        long fin = System.nanoTime();
+//        
+//        // Calculamos el tiempo en segundos
+//        double tiempoEjecucionSegundos;
+//        tiempoEjecucionSegundos = (fin - inicioBucle) / 1_000_000_000.0; // Convertimos nanosegundos a segundos
+//        
+//        JOptionPane.showMessageDialog(this, "Tiempo de ejecución: " + tiempoEjecucionSegundos + " segundos");
     public Menú() {
         initComponents();
     }
