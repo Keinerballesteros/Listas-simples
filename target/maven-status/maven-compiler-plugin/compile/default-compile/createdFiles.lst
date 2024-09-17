@@ -2,6 +2,7 @@ com\mycompany\listassimples\Menú$1.class
 com\mycompany\listassimples\Menú$7.class
 com\mycompany\listassimples\Menú$8.class
 com\mycompany\listassimples\Listassimples.class
+<<<<<<< HEAD
 com\mycompany\listassimples\Menú$4.class
 com\mycompany\listassimples\Menú.class
 com\mycompany\listassimples\Menú$3.class
@@ -10,5 +11,11 @@ com\mycompany\listassimples\Menú$9.class
 com\mycompany\listassimples\Menú$2.class
 com\mycompany\listassimples\Menú$5.class
 com\mycompany\listassimples\Menú$10.class
+=======
+com\mycompany\listassimples\Men�$12.class
+com\mycompany\listassimples\Men�$11.class
+com\mycompany\listassimples\Men�$9.class
+com\mycompany\listassimples\Men�$10.class
+>>>>>>> 781f47319ce139ecaa95a87a523e4c71d2695b57
 com\mycompany\listassimples\Nodo.class
 com\mycompany\listassimples\Menú$6.class

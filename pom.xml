@@ -7,6 +7,11 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<<<<<<< HEAD
+=======
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
+>>>>>>> 781f47319ce139ecaa95a87a523e4c71d2695b57
         <exec.mainClass>com.mycompany.listassimples.Listassimples</exec.mainClass>
         <maven.compiler.release>21</maven.compiler.release>
     </properties>
